@@ -38,12 +38,11 @@ def main():
     model.compile(loss='mean_squared_error', optimizer=sgd)
 
     # 学習・検証
-    hist = model.fit(
+    model.fit(
         X_train, Y_train, nb_epoch=nb_epoch,
         batch_size=batch_size, validation_split=0.2,
         show_accuracy=True
     )
-    print(hist.history)
 
     # テスト集合に対する予測結果の出力
     # classes = model.predict_classes(X_test, batch_size=batch_size)
