@@ -30,17 +30,10 @@ def main():
     model.add(Activation('relu'))
     model.add(Dropout(0.3))
 
-    model.add(Dense(nb_hidden_units[1], init='uniform'))
-    model.add(Activation('relu'))
-    model.add(Dropout(0.3))
-
-    model.add(Dense(nb_hidden_units[2], init='uniform'))
-    model.add(Activation('relu'))
-    model.add(Dropout(0.3))
-
-    model.add(Dense(nb_hidden_units[3], init='uniform'))
-    model.add(Activation('relu'))
-    model.add(Dropout(0.3))
+    for l in range(1, len(nb_hidden_units)):
+        model.add(Dense(nb_hidden_units[l], init='uniform'))
+        model.add(Activation('relu'))
+        model.add(Dropout(0.3))
 
     model.add(Dense(nb_classes, init='uniform'))
     model.add(Activation('softmax'))
