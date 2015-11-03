@@ -8,10 +8,12 @@ from keras.utils import np_utils
 def main():
     #data_dir = '../data_mini'
     data_dir = '../data'
+    out_dir = '..'
     input_dim = 784
     batch_size = 128
     nb_classes = 10
     nb_epoch = 20  # 1つのテストデータを何回学習するか
+    validation_ratio = 0.0
 
     # 訓練集合、テスト集合の準備
     X_train = np.loadtxt(data_dir + '/train.csv', delimiter=',', skiprows=1, usecols=range(1, input_dim + 1))
@@ -40,13 +42,15 @@ def main():
     # 学習・検証
     model.fit(
         X_train, Y_train, nb_epoch=nb_epoch,
-        batch_size=batch_size, validation_split=0.2,
-        show_accuracy=True
-    )
+        batch_size=batch_size, validation_split=validation_ratio,
+        show_accuracy=True)
 
     # テスト集合に対する予測結果の出力
-    # classes = model.predict_classes(X_test, batch_size=batch_size)
-    # proba = model.predict_proba(X_test, batch_size=batch_size)
+    classes = model.predict_classes(X_test, batch_size=batch_size)
+    print(classes)
+    np.savetxt(
+        out_dir + '/ans.csv', np.dstack((range(1, len(classes) + 1), classes))[0],
+        delimiter=',', header='ImageId,Label', comments='', fmt='%i')
 
 
 if __name__ == '__main__':
