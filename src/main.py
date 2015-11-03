@@ -13,11 +13,12 @@ def main():
     nb_hidden_units = [128, 128, 128, 128]
     batch_size = 128
     nb_classes = 10
-    nb_epoch = 20  # 1つのテストデータを何回学習するか
+    nb_epoch = 100  # 1つのテストデータを何回学習するか
     dropout_ratio = 0.1
     validation_ratio = 0.2
     weight_decay = 1e-4
     momentum = 0.9
+    learning_rate = 0.01
 
     # 訓練集合、テスト集合の準備
     X_train = np.loadtxt(data_dir + '/train.csv', delimiter=',', skiprows=1, usecols=range(1, input_dim + 1))
@@ -41,7 +42,7 @@ def main():
     model.add(Dense(nb_classes, init='uniform'))
     model.add(Activation('softmax'))
 
-    sgd = SGD(lr=0.1, decay=weight_decay, momentum=momentum, nesterov=True)
+    sgd = SGD(lr=learning_rate, decay=weight_decay, momentum=momentum, nesterov=True)
     model.compile(loss='mean_squared_error', optimizer=sgd)
 
     # 学習・検証
