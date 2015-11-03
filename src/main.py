@@ -25,11 +25,11 @@ def main():
 
     model.add(Dense(64, input_shape=(input_dim,), init='uniform'))
     model.add(Activation('relu'))
-    #model.add(Dropout(0.5))
+    model.add(Dropout(0.2))
 
     model.add(Dense(64, init='uniform'))
     model.add(Activation('relu'))
-    #model.add(Dropout(0.5))
+    model.add(Dropout(0.2))
 
     model.add(Dense(nb_classes, init='uniform'))
     model.add(Activation('softmax'))
