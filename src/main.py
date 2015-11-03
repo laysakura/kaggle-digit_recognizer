@@ -17,7 +17,7 @@ def main():
     dropout_ratio = 0.2
     validation_ratio = 0.2
     weight_decay = 1e-4
-    momentum = 0.5
+    momentum = 0.9
 
     # 訓練集合、テスト集合の準備
     X_train = np.loadtxt(data_dir + '/train.csv', delimiter=',', skiprows=1, usecols=range(1, input_dim + 1))
