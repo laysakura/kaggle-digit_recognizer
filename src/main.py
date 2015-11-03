@@ -14,7 +14,7 @@ def main():
     batch_size = 128
     nb_classes = 10
     nb_epoch = 20  # 1つのテストデータを何回学習するか
-    dropout_ratio = 0.2
+    dropout_ratio = 0.1
     validation_ratio = 0.2
     weight_decay = 1e-4
     momentum = 0.9
