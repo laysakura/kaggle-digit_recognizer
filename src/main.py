@@ -10,7 +10,7 @@ def main():
     data_dir = '../data'
     out_dir = '..'
     input_dim = 784
-    nb_hidden_units = [128, 128]
+    nb_hidden_units = [128, 128, 128]
     batch_size = 128
     nb_classes = 10
     nb_epoch = 20  # 1つのテストデータを何回学習するか
@@ -27,6 +27,10 @@ def main():
     model = Sequential()
 
     model.add(Dense(nb_hidden_units[0], input_shape=(input_dim,), init='uniform'))
+    model.add(Activation('relu'))
+    model.add(Dropout(0.3))
+
+    model.add(Dense(nb_hidden_units[1], init='uniform'))
     model.add(Activation('relu'))
     model.add(Dropout(0.3))
 
