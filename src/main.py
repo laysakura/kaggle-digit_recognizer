@@ -11,7 +11,7 @@ def main():
     input_dim = 784
     batch_size = 128
     nb_classes = 10
-    nb_epoch = 20
+    nb_epoch = 20  # 1つのテストデータを何回学習するか
 
     # 訓練集合、テスト集合の準備
     X_train = np.loadtxt(data_dir + '/train.csv', delimiter=',', skiprows=1, usecols=range(1, input_dim + 1))
@@ -24,11 +24,11 @@ def main():
     model = Sequential()
 
     model.add(Dense(64, input_shape=(input_dim,), init='uniform'))
-    model.add(Activation('tanh'))
+    model.add(Activation('relu'))
     model.add(Dropout(0.5))
 
     model.add(Dense(64, init='uniform'))
-    model.add(Activation('tanh'))
+    model.add(Activation('relu'))
     model.add(Dropout(0.5))
 
     model.add(Dense(nb_classes, init='uniform'))
