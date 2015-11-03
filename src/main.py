@@ -14,6 +14,7 @@ def main():
     batch_size = 128
     nb_classes = 10
     nb_epoch = 20  # 1つのテストデータを何回学習するか
+    dropout_ratio = 0.2
     validation_ratio = 0.2
 
     # 訓練集合、テスト集合の準備
@@ -28,12 +29,12 @@ def main():
 
     model.add(Dense(nb_hidden_units[0], input_shape=(input_dim,), init='uniform'))
     model.add(Activation('relu'))
-    model.add(Dropout(0.3))
+    model.add(Dropout(dropout_ratio))
 
     for l in range(1, len(nb_hidden_units)):
         model.add(Dense(nb_hidden_units[l], init='uniform'))
         model.add(Activation('relu'))
-        model.add(Dropout(0.3))
+        model.add(Dropout(dropout_ratio))
 
     model.add(Dense(nb_classes, init='uniform'))
     model.add(Activation('softmax'))
