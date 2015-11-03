@@ -23,11 +23,11 @@ def main():
     # モデル構築・初期化
     model = Sequential()
 
-    model.add(Dense(64, input_shape=(input_dim,), init='uniform'))
+    model.add(Dense(100, input_shape=(input_dim,), init='uniform'))
     model.add(Activation('relu'))
     model.add(Dropout(0.3))
 
-    model.add(Dense(64, init='uniform'))
+    model.add(Dense(100, init='uniform'))
     model.add(Activation('relu'))
     model.add(Dropout(0.3))
 
