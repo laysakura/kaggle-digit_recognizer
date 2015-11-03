@@ -17,6 +17,7 @@ def main():
     dropout_ratio = 0.2
     validation_ratio = 0.2
     weight_decay = 1e-4
+    momentum = 0.5
 
     # 訓練集合、テスト集合の準備
     X_train = np.loadtxt(data_dir + '/train.csv', delimiter=',', skiprows=1, usecols=range(1, input_dim + 1))
@@ -40,7 +41,7 @@ def main():
     model.add(Dense(nb_classes, init='uniform'))
     model.add(Activation('softmax'))
 
-    sgd = SGD(lr=0.1, decay=weight_decay, momentum=0.9, nesterov=True)
+    sgd = SGD(lr=0.1, decay=weight_decay, momentum=momentum, nesterov=True)
     model.compile(loss='mean_squared_error', optimizer=sgd)
 
     # 学習・検証
