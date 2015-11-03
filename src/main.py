@@ -16,7 +16,7 @@ def main():
     nb_epoch = 20  # 1つのテストデータを何回学習するか
     dropout_ratio = 0.2
     validation_ratio = 0.2
-    weight_decay = 1e-5
+    weight_decay = 1e-4
 
     # 訓練集合、テスト集合の準備
     X_train = np.loadtxt(data_dir + '/train.csv', delimiter=',', skiprows=1, usecols=range(1, input_dim + 1))
