@@ -10,16 +10,15 @@ def main():
     data_dir = '../data'
     out_dir = '..'
     input_dim = 784
-    scale = 255.0  # CSVの各要素は[0,255]
     nb_hidden_units = [128, 128, 128, 128]
     batch_size = 128
     nb_classes = 10
-    nb_epoch = 20  # 1つのテストデータを何回学習するか
+    nb_epoch = 100  # 1つのテストデータを何回学習するか
     dropout_ratio = 0.1
     validation_ratio = 0.2
     weight_decay = 1e-4
     momentum = 0.9
-    learning_rate = 0.1
+    learning_rate = 0.01
 
     # 訓練集合、テスト集合の準備
     X_train = np.loadtxt(data_dir + '/train.csv', delimiter=',', skiprows=1, usecols=range(1, input_dim + 1))
